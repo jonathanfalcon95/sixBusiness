@@ -2,13 +2,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-
+import {Image} from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
-
+const img1 = require('../assets/images/sixLogo.png');
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
@@ -19,14 +19,14 @@ export default function BottomTabNavigator() {
       initialRouteName="TabOne"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="Ordenes"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-cart" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Pendientes"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
@@ -35,7 +35,12 @@ export default function BottomTabNavigator() {
     </BottomTab.Navigator>
   );
 }
-
+function ImageLogo(){
+  return <Image
+  source={ img1 }
+  style={{width: 55, height: 40, marginLeft:10}}
+  />;
+  }
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 function TabBarIcon(props: { name: string; color: string }) {
@@ -52,7 +57,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ headerTitle: 'SixToGo Negocio',   headerLeft: props => <ImageLogo /> }}
       />
     </TabOneStack.Navigator>
   );
@@ -71,3 +76,4 @@ function TabTwoNavigator() {
     </TabTwoStack.Navigator>
   );
 }
+

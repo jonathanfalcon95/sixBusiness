@@ -21,8 +21,13 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.sixtogo.yourappname",
+      "versionCode": 1
+    },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "description": ""
   }
 }
